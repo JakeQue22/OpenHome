@@ -1,0 +1,13 @@
+{
+    "host": "your-pbs-host.example.com",
+    "port": 8007,
+    "username": "root@pam",
+    "api_token_id": "your_token_id",
+    "api_token_secret": "your_token_secret",
+    "verify_ssl": true,
+    "unique_name": "proxmox_backup_ability",
+    "matching_hotwords": [
+        "proxmox backup", "backup server", "pbs", "datastore",
+        "backup", "restore", "snapshot", "backup job"
+    ]
+}
