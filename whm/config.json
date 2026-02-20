@@ -1,0 +1,8 @@
+{
+    "host": "your-server-hostname.com",
+    "username": "root",
+    "api_token": "your_api_token_here",
+    "verify_ssl": true,
+    "unique_name": "whm_ability",
+    "matching_hotwords": ["server", "hosting", "cpanel", "whm"]
+}
