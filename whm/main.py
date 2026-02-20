@@ -112,7 +112,11 @@ def get_server_resources() -> Dict[str, Any]:
     load_data = _make_api_request("loadavg")
     disk_data = _make_api_request("getdiskinfo")
 
-    avg = load_data.get("avg", [0, 0, 0])
+    raw_avg = load_data.get("avg", [])
+    load_1 = raw_avg[0] if len(raw_avg) > 0 else 0
+    load_5 = raw_avg[1] if len(raw_avg) > 1 else 0
+    load_15 = raw_avg[2] if len(raw_avg) > 2 else 0
+
     disk = disk_data.get("partition", [{}])
     root_part = {}
     for part in disk if isinstance(disk, list) else []:
@@ -122,10 +126,10 @@ def get_server_resources() -> Dict[str, Any]:
 
     result = {
         "cpu": {
-            "load_1min": avg[0] if len(avg) > 0 else 0,
-            "load_5min": avg[1] if len(avg) > 1 else 0,
-            "load_15min": avg[2] if len(avg) > 2 else 0,
-            "status": "ok" if (avg[0] if len(avg) > 0 else 0) < 4 else "high"
+            "load_1min": load_1,
+            "load_5min": load_5,
+            "load_15min": load_15,
+            "status": "ok" if load_1 < 4 else "high"
         },
         "disk": {
             "total": root_part.get("total", "N/A"),
