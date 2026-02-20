@@ -1,0 +1,13 @@
+{
+    "host": "your-proxmox-host.example.com",
+    "port": 8006,
+    "username": "root@pam",
+    "api_token_id": "your_token_id",
+    "api_token_secret": "your_token_secret",
+    "verify_ssl": true,
+    "unique_name": "proxmox_ability",
+    "matching_hotwords": [
+        "proxmox", "virtual machine", "vm", "container",
+        "node", "cluster", "hypervisor", "lxc", "qemu"
+    ]
+}
